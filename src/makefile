@@ -21,9 +21,9 @@ CLFLAGS=-g
 
 BASEDIR=..
 
-GPP=/usr/local/bin/g++-4.9
-FLEX=flex
-BISON=bison
+GPP=/usr/bin/g++
+FLEX=/usr/bin/flex
+BISON=/usr/local/bin/bison
 
 BIN=$(BASEDIR)/bin
 OBJDIR=$(BASEDIR)/bin/obj
