@@ -1,0 +1,25 @@
+//predicate declarations
+Source(s)
+MapsTo(s,t)
+MinimalHamming(s,t)
+Target(t)
+Similar(s,t)
+
+// 1.13172  MinimalHamming(a,b) ^ Source(a) ^ Target(b) => MapsTo(a,b)
+1.13172  !Source(a1) v !Target(a2) v !MinimalHamming(a1,a2) v MapsTo(a1,a2)
+
+// 0       Source(a1)
+0       Source(a1)
+
+// 0       Target(a1)
+0       Target(a1)
+
+// 0       MinimalHamming(a1,a2)
+0       MinimalHamming(a1,a2)
+
+// 0       Similar(a1,a2)
+0       Similar(a1,a2)
+
+// -0.199556  MapsTo(a1,a2)
+-0.199556  MapsTo(a1,a2)
+

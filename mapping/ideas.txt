@@ -1,0 +1,40 @@
+
+
+learnwts -d -i ./tutorial-mlns/soc-net/smoking.mln -o smoking-out.mln -t ./tutorial-data/smoking/smoking-train.db -ne Smokes,Cancer
+
+infer -ms -i ./smoking-out.mln -r smoking.result -e ./tutorial-data/smoking/smoking-test.db -q Smokes,Cancer
+
+
+alias learnwts='docker run -ti -v `pwd`:/data hjoest/alchemy learnwts'
+alias infer='docker run -ti -v `pwd`:/data hjoest/alchemy infer'
+
+
+mapping.mln:
+
+// Evidence, queries
+Source(s)
+Target(t)
+MinimalHamming(s, t)
+SimilarConcept(s, t)
+MapsTo(s, t)
+
+// Rules
+Source(s1) ^ Source(s2) => !MapsTo(s1, s2)
+Target(t1) ^ Target(t2) => !MapsTo(t1, t2)
+MinimalHamming(s, t) ^ Source(s) ^ Target(t) => MapsTo(s, t)
+SimilarConcept(s, t) ^ Source(s) ^ Target(t) => MapsTo(s, t)
+
+mapping-train.db:
+
+Source("attr:gtin")
+Source("attr:shortDescription")
+Target("attr:ean")
+Target("attr:productTitle")
+
+SimilarConcept("attr:gtin", "attr:ean")
+SimilarConcept("attr:shortDescription", "attr:productTitle")
+
+
+learnwts -d -i mapping.mln -o mapping-out.mln -t mapping-train.db -ne MapsTo
+
+infer -ms -i mapping-out.mln -r mapping.result -e mapping-test.db -q MapsTo

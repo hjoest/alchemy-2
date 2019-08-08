@@ -1,0 +1,4 @@
+Source(Attr_effectiveDate)
+Target(Attr_validFrom)
+
+Similar(Attr_effectiveDate, Attr_validFrom)

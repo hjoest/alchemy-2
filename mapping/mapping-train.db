@@ -1,0 +1,12 @@
+Source(Attr_gtin)
+Source(Attr_shortDescription)
+Target(Attr_ean)
+Target(Attr_productTitle)
+
+Similar(Attr_gtin, Attr_ean)
+Similar(Attr_shortDescription, Attr_productTitle)
+
+MinimalHamming(Attr_gtin, Attr_ean)
+
+MapsTo(Attr_gtin, Attr_ean)
+MapsTo(Attr_shortDescription, Attr_productTitle)
