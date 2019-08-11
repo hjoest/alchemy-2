@@ -1,4 +1,8 @@
+Source(Attr_isOrderableUnit)
 Source(Attr_effectiveDate)
 Target(Attr_validFrom)
+Target(Attr_orderable)
 
 Similar(Attr_effectiveDate, Attr_validFrom)
+!MinimalHamming(Attr_effectiveDate, Attr_validFrom)
+MinimalHamming(Attr_isOrderableUnit, Attr_orderable)

@@ -1,4 +1,4 @@
-// Evidence, queries
+// Prepositions and queries
 Source(s)
 Target(t)
 MinimalHamming(s, t)
@@ -6,11 +6,7 @@ Similar(s, t)
 MapsTo(s, t)
 
 // Rules
-// Source(s1) ^ Source(s2) => !MapsTo(s1, s2)
-// Source(s1) ^ Source(s2) => !MapsTo(s2, s1)
-// Target(t1) ^ Target(t2) => !MapsTo(t1, t2)
-
+MapsTo(a, b) => Source(a)
+MapsTo(a, b) => Target(b)
 MinimalHamming(a, b) ^ Source(a) ^ Target(b) => MapsTo(a, b)
-// Similar(a, b) ^ Source(a) ^ Target(b) => MapsTo(a, b)
-// MinimalHamming(a, b) => MapsTo(a, b)
-// Similar(a, b) => MapsTo(a, b)
+Similar(a, b) ^ Source(a) ^ Target(b) => MapsTo(a, b)
