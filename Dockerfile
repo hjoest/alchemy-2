@@ -19,3 +19,6 @@ COPY --from=build-alchemy /build/alchemy/*.md /usr/local/alchemy/
 COPY --from=build-alchemy /build/alchemy/doc /usr/local/alchemy/doc/
 COPY --from=build-alchemy /build/alchemy/exdata /usr/local/alchemy/exdata/
 COPY --from=build-alchemy /build/alchemy/tutorial /usr/local/alchemy/tutorial/
+
+RUN mkdir /data
+WORKDIR /data
